@@ -114,7 +114,7 @@ queryClient.prefetchQuery(messagesQuery);
 
 // adding more query options to convexQuery()
 const { data } = useQuery({
-  ...convexQuery(api.mesages.listMessages, {}),
+  ...convexQuery(api.messages.listMessages, {}),
   initialData: [],
   gcTime: 10000,
 });`}

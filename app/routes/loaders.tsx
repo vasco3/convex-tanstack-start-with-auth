@@ -49,7 +49,7 @@ export default function BlockingAndStreaming() {
     await opts.context.queryClient.ensureQueryData(
       convexQuery(api.messages.list, {}),
     );
-  };
+  },
   component: () => {
     const { data } = useSuspenseQuery(
       convexQuery(api.messages.list, {})
