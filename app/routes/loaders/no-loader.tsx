@@ -29,7 +29,7 @@ function Messages() {
       convexQuery(api.messages.list, {})
     );
   },
-            })`}
+})`}
         />
       </div>
     </div>
