@@ -54,14 +54,18 @@ export default function ReactQuery() {
             for live, always-up-to-date results.
           </p>
           <p>
-            Open this page in another tab or on your phone and send a message to
-            see these updates pushed live.{' '}
-            <Button variant="ghost" onClick={() => sendTraffic()}>
-              Simulat{simulationRunning ? 'ing' : 'e'} chat traffic{' '}
+            Open this page in another tab or on your phone and send a message or{' '}
+            <Button
+              variant="ghost"
+              className="text-md px-0"
+              onClick={() => sendTraffic()}
+            >
+              simulat{simulationRunning ? 'ing' : 'e'} chat traffic{' '}
               {simulationRunning ? (
                 <ReloadIcon className="h-4 w-4 animate-spin inline" />
               ) : null}
-            </Button>
+            </Button>{' '}
+            to see these updates pushed live.{' '}
           </p>
           <Chat useSuspense={true} />
           <p>

@@ -69,17 +69,24 @@ export default function LiveQueriesSSR() {
         />
       </div>
 
-      <p>On the browser these queries resume their subscriptions:</p>
       <p>
-        <Button onClick={() => sendTraffic()}>
-          Simulat{simulationRunning ? 'ing' : 'e'} chat traffic{' '}
+        Then on the browser these queries resume their subscriptions, which you
+        can see by{' '}
+        <Button
+          variant="link"
+          className="text-md px-0"
+          onClick={() => sendTraffic()}
+        >
+          simulating chat traffic{' '}
           {simulationRunning ? (
             <ReloadIcon className="h-4 w-4 animate-spin inline" />
           ) : null}
         </Button>
+        .
       </p>
       <p>
-        Another way to opt into server-side data loading load in a{' '}
+        Another way to opt into server-side data loading is to load the query in
+        a{' '}
         <Link to="/loaders" search={{ cacheBust: 'initial' }}>
           loader
         </Link>

@@ -23,7 +23,7 @@ const Message = ({
   body: string
   _creationTime: number
 }) => (
-  <div className="flex items-start space-x-2 mb-4">
+  <div className="flex items-start space-x-2">
     <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
       {user.toLowerCase().startsWith('user ') ? user[5] : user[0].toUpperCase()}
     </div>
@@ -40,7 +40,7 @@ const Message = ({
 )
 
 const MessageSkeleton = () => (
-  <div className="flex items-start space-x-2 mb-4">
+  <div className="flex items-start space-x-2">
     <Skeleton className="w-8 h-8 rounded-full" />
     <div className="flex-1">
       <div className="flex items-baseline">
