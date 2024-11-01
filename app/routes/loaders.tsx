@@ -1,6 +1,5 @@
 import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
-import CodeSample from '../components/CodeSample'
 import { Button } from '~/components/ui/button'
 
 export const Route = createFileRoute('/loaders')({
@@ -22,7 +21,7 @@ export default function BlockingAndStreaming() {
   const [cacheBust, setCacheBust] = useState(initialCacheBust)
   return (
     <>
-      <h2 className="mt-0">Pull data loading out to Loaders and Prefetching</h2>
+      <h2 className="mt-0">Loaders and Prefetching</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <p className="mt-0">
