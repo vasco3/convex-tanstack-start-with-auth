@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-200 antialiased;
+  }
+
+  p a {
+    @apply hover:text-white transition-colors font-medium underline underline-offset-2;
+  }
+}
