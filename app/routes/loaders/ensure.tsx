@@ -2,6 +2,7 @@ import { convexQuery } from '@convex-dev/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import { api } from 'convex/_generated/api'
 import Chat from '~/components/Chat'
+import CodeSample from '../../components/CodeSample'
 
 export const Route = createFileRoute('/loaders/ensure')({
   component: Messages,
@@ -29,6 +30,22 @@ function Messages() {
         gcTime={2000}
         useSuspense={false}
       />
+      <div className="mt-4">
+        <CodeSample
+          code={`export const Route = createFileRoute('/loaders/ensure')({
+  loader: async (opts) => {
+    await opts.context.queryClient.ensureQueryData(
+      convexQuery(api.messages.list, {}),
+    );
+  },
+  component: () => {
+    const { data } = useSuspenseQuery(
+      convexQuery(api.messages.list, {})
+    );
+  },
+})`}
+        />
+      </div>
     </div>
   )
 }

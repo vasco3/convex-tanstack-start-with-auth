@@ -22,10 +22,10 @@ export default function BlockingAndStreaming() {
   const [cacheBust, setCacheBust] = useState(initialCacheBust)
   return (
     <>
+      <h2 className="mt-0">Pull data loading out to Loaders and Prefetching</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h2 className="mt-0">Loaders and Prefetching</h2>
-          <p>
+          <p className="mt-0">
             TanStack Start routes can have isomorphic loader functions that run
             on the server for the initial pageload and on the client for
             subsequent client-side navigations.
@@ -43,30 +43,7 @@ export default function BlockingAndStreaming() {
             Loaders also run during prefetching, triggered by the cursor mousing
             onto a link in TanStack Start by default.
           </p>
-          <CodeSample
-            code={`export const Route = createFileRoute('/loaders')({
-  loader: async (opts) => {
-    await opts.context.queryClient.ensureQueryData(
-      convexQuery(api.messages.list, {}),
-    );
-  },
-  component: () => {
-    const { data } = useSuspenseQuery(
-      convexQuery(api.messages.list, {})
-    );
-  },
-})`}
-          />
 
-          <p>
-            Loaders let you eject from the convenience of component-local
-            reasoning through
-            <code>useSuspenseQuery</code>
-            where a component fetching its own data, to the cold reality of fast
-            page loads when you need it.
-          </p>
-        </div>
-        <div>
           <nav className="flex flex-col space-y-4 mb-4">
             <Button asChild>
               <Link
@@ -98,6 +75,16 @@ export default function BlockingAndStreaming() {
               </Link>
             </Button>
           </nav>
+
+          <h3>When to use a loader</h3>
+          <p>
+            Loading a query in a loader ejects from the convenience of
+            component-local reasoning through <code>useSuspenseQuery</code>{' '}
+            where a component fetching its own data to the cold reality of fast
+            page loads when you need it.
+          </p>
+        </div>
+        <div>
           <Outlet />
         </div>
       </div>
@@ -105,7 +92,7 @@ export default function BlockingAndStreaming() {
       <p>
         Tanner's{' '}
         <a href="https://www.youtube.com/watch?v=AuHqwQsf64o">
-          An Early Glimpse of TanStack Start"
+          An Early Glimpse of TanStack Start
         </a>{' '}
         video
       </p>

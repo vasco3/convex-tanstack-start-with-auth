@@ -22,7 +22,7 @@ export default function LiveQueriesSSR() {
     <>
       <h2>Server-Side Rendering and Live Queries</h2>
       <p>
-        TanStack Start routes render on the server for the first page load of a
+        TanStack Start routes render on the server for the first pageload of a
         browsing session. Neither the React Query nor standard Convex{' '}
         <code>useQuery()</code> hooks kick off requests for this data during
         this initial SSR pass, but the React Query hook{' '}
@@ -70,11 +70,11 @@ export default function LiveQueriesSSR() {
       </div>
 
       <p>
-        Then on the browser these queries resume their subscriptions, which you
-        can see by{' '}
+        On the browser these queries resume their subscriptions which you can
+        see by{' '}
         <Button
           variant="link"
-          className="text-md px-0"
+          className="text-md px-0 underline"
           onClick={() => sendTraffic()}
         >
           simulating chat traffic{' '}

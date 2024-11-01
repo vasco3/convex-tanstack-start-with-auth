@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import CodeSample from '~/components/CodeSample'
 import Chat from '~/components/Chat'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools/production'
 import { useState } from 'react'
@@ -97,7 +98,7 @@ export default function QueryCaching() {
           </CardContent>
         </Card>
         <div>
-          <p>
+          <p className="mt-0">
             The default <code>gcTime</code> in React Query is five minutes and
             this is not currently overridden in the Convex query options
             factories like <code>convexQuery()</code>, but this may change in
@@ -116,6 +117,21 @@ export default function QueryCaching() {
             .
           </p>
         </div>
+
+        <CodeSample
+          code={`import { useQuery } from "@tanstack/react-query";
+import { convexQuery } from "@convex-dev/react-query";
+import { api } from "../convex/_generated/api";
+
+const { data, isPending } = useQuery({
+  // spread query options to add more or override
+  ...convexQuery(
+    api.messages.listMessages,
+    { channel: "chatty" }
+  ),
+  gcTime: 2000 // 2 seconds
+});`}
+        />
       </div>
       <ReactQueryDevtools initialIsOpen={open} />
     </>
