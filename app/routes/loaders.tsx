@@ -101,7 +101,7 @@ export default function BlockingAndStreaming() {
           <Outlet />
         </div>
       </div>
-      <h2>Resources / Learning More</h2>
+      <h2>Learn More</h2>
       <p>
         Tanner's{' '}
         <a href="https://www.youtube.com/watch?v=AuHqwQsf64o">
