@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Card,
   CardContent,
@@ -14,12 +14,20 @@ import { api } from 'convex/_generated/api'
 import { Skeleton } from './ui/skeleton'
 import CodeSample from '~/components/CodeSample'
 
-function dateTimeFormat(ms: number): string {
+function serverTimeFormat(ms: number): string {
   return new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Los_Angeles',
     dateStyle: 'short',
     timeStyle: 'short',
   }).format(new Date(ms))
+}
+function clientTimeFormat(ms: number): string {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    dateStyle: 'short',
+    timeStyle: 'short',
+    timeZone: 'America/New_York',
+  })
+  return formatter.format(new Date(ms))
 }
 const Message = ({
   user,
@@ -29,22 +37,32 @@ const Message = ({
   user: string
   body: string
   _creationTime: number
-}) => (
-  <div className="flex items-start space-x-2">
-    <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
-      {user.toLowerCase().startsWith('user ') ? user[5] : user[0].toUpperCase()}
-    </div>
-    <div className="flex-1">
-      <div className="flex items-baseline">
-        <span className="font-semibold mr-2">{user}</span>
-        <span className="text-xs text-muted-foreground">
-          {dateTimeFormat(_creationTime)}
-        </span>
+}) => {
+  const [timestamp, setTimestamp] = useState<string | undefined>()
+  useEffect(() => {
+    setTimestamp(clientTimeFormat(_creationTime))
+  }, [_creationTime])
+  return (
+    <div className="flex items-start space-x-2 group">
+      <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+        {user.toLowerCase().startsWith('user ')
+          ? user[5]
+          : user[0].toUpperCase()}
       </div>
-      <p className="text-sm mt-1">{body}</p>
+      <div className="flex-1">
+        <div className="flex items-baseline">
+          <span className="font-semibold mr-2">{user}</span>
+          <span
+            className={`text-xs text-muted-foreground opacity-0 transition-opacity duration-100 ${timestamp ? 'group-hover:opacity-100' : ''}`}
+          >
+            {timestamp || serverTimeFormat(_creationTime)}
+          </span>
+        </div>
+        <p className="text-sm mt-1">{body}</p>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 const MessageSkeleton = () => (
   <div className="flex items-start space-x-2">
