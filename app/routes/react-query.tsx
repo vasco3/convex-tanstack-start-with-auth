@@ -117,7 +117,7 @@ const { data } = useQuery({
 
       <h2>Learn More</h2>
       <p>
-        <a href="https://tanstack.com/query/latest/docs/framework/react/overviewj">
+        <a href="https://tanstack.com/query/latest/docs/framework/react/overview">
           TanStack Query (AKA React Query) docs
         </a>
       </p>
