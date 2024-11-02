@@ -14,6 +14,13 @@ import { api } from 'convex/_generated/api'
 import { Skeleton } from './ui/skeleton'
 import CodeSample from '~/components/CodeSample'
 
+function dateTimeFormat(ms: number): string {
+  return new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Los_Angeles',
+    dateStyle: 'short',
+    timeStyle: 'short',
+  }).format(new Date(ms))
+}
 const Message = ({
   user,
   body,
@@ -31,7 +38,7 @@ const Message = ({
       <div className="flex items-baseline">
         <span className="font-semibold mr-2">{user}</span>
         <span className="text-xs text-muted-foreground">
-          {new Date(_creationTime).toLocaleDateString()}
+          {dateTimeFormat(_creationTime)}
         </span>
       </div>
       <p className="text-sm mt-1">{body}</p>
