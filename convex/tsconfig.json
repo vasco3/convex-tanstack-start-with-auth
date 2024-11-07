@@ -16,9 +16,13 @@
     "target": "ESNext",
     "lib": ["ES2021", "dom"],
     "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": true,
     "module": "ESNext",
     "isolatedModules": true,
-    "noEmit": true
+    "esModuleInterop": true,
+    "noEmit": true,
+    /* Prevents node_modules from adding additional global types e.g. node types */
+    "types": ["node", "react"]
   },
   "include": ["./**/*"],
   "exclude": ["./_generated"]
