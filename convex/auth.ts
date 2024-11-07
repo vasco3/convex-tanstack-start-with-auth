@@ -18,11 +18,11 @@ export const { auth, signIn, signOut, store } = convexAuth({
           const resend = new Resend(process.env.AUTH_RESEND_KEY!)
 
           const res = await resend.emails.send({
-            from: 'Fentexhaus <fentexhaus+automatico@sesiones.fentexhaus.mx>',
+            from: process.env.EMAIL_FROM!, // 'Convex with TanStack Start <no-reply@gmail.com>',
             to,
-            subject: 'Iniciar sesión en Fentexhaus.mx',
+            subject: 'Sign in to Convex with TanStack Start',
             react: SignInEmail({ url }),
-            text: `Iniciar sesión en fentexhaus.mx: ${url}`,
+            text: `Sign in to Convex with TanStack Start: ${url}`,
           })
 
           if (res.error)
