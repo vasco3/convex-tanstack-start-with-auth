@@ -63,6 +63,14 @@ export default function LandingPage() {
           <span className="text-red-500"> Query</span>, and{' '}
           <span className="text-[#F3B01C]">Convex</span>
         </h1>
+        <Unauthenticated>
+          <SignIn />
+        </Unauthenticated>
+        <Authenticated>
+          <div className="bg-green-800/20 border border-green-600/30 rounded-lg p-4 text-green-400">
+            You are signed in! Feel free to explore the examples.
+          </div>
+        </Authenticated>
         <div className="flex flex-col gap-4 not-prose lg:row-start-2">
           <p className="text-xl font-light text-slate-300">
             TanStack Start is coming. The best way to use Convex with Start is
