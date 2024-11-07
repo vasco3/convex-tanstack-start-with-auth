@@ -9,6 +9,7 @@ import { Body, Head, Html, Meta, Scripts } from '@tanstack/start'
 import * as React from 'react'
 import appCss from '../styles/app.css?url'
 import { cn } from '~/lib/utils'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   {
@@ -45,6 +46,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </Head>
       <Body>
         <RootLayout>{children}</RootLayout>
+        <ReactQueryDevtools initialIsOpen={false} />
         <ScrollRestoration />
         <Scripts />
       </Body>

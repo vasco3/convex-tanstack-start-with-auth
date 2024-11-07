@@ -1,6 +1,8 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { Authenticated, Unauthenticated } from 'convex/react'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
+import { SignIn } from '../components/SignIn'
 
 export const Route = createFileRoute('/')({
   component: LandingPage,
